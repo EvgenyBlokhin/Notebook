@@ -1,0 +1,34 @@
+﻿@model Notebook.Models.Contact
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Редактирование контакта</h2>
+
+@using (Html.BeginForm())
+{
+    <h4>Контакт</h4>
+    @Html.HiddenFor(model => model.Id)
+    <p>
+        Ф.И.О. <br />
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Номер телефона <br />
+        @Html.EditorFor(model => model.Number)
+    </p>
+    <p>
+        Категория <br />
+        @Html.DropDownListFor(model => model.CategoryId, ViewBag.Categories as SelectList)
+    </p>
+
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+}
+<div>
+    @Html.ActionLink("К списку контактов", "Index")
+</div>
+
