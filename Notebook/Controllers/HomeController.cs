@@ -47,7 +47,7 @@ namespace Notebook.Controllers {
             }
             //using (NotebookContext db = new NotebookContext())
             //{
-                Contact contact = db.Contacts.Include(c => c.Category).ToList().Where(p => p.Id == id).First();
+            Contact contact = db.Contacts.Include(c => c.Category).FirstOrDefault(c => c.Id == id);
                 if (contact != null)
                 {
                     SelectList categories = new SelectList(db.Categories, "Id", "Name");
@@ -72,8 +72,8 @@ namespace Notebook.Controllers {
         public ActionResult Delete(int id) {
             //using (NotebookContext db = new NotebookContext())
             //{
-                Contact contact = db.Contacts.Include(c => c.Category).ToList().Where(p => p.Id == id).First();
-                if (contact == null)
+            Contact contact = db.Contacts.Include(c => c.Category).FirstOrDefault(c => c.Id == id);
+            if (contact == null)
                 {
                     return HttpNotFound();
                 }
@@ -89,8 +89,8 @@ namespace Notebook.Controllers {
             }
             //using (NotebookContext db = new NotebookContext())
             //{
-                Contact contact = db.Contacts.Include(c => c.Category).ToList().Where(p => p.Id == id).First();
-                if (contact != null)
+            Contact contact = db.Contacts.Include(c => c.Category).FirstOrDefault(c => c.Id == id);
+            if (contact != null)
                 {
                     db.Contacts.Remove(contact);
                     db.SaveChanges();
@@ -106,8 +106,8 @@ namespace Notebook.Controllers {
             }
             //using (NotebookContext db = new NotebookContext())
             //{
-                Contact contact = db.Contacts.Include(c => c.Category).ToList().Where(p => p.Id == id).First();
-                if (contact == null)
+            Contact contact = db.Contacts.Include(c => c.Category).FirstOrDefault(c => c.Id == id);
+            if (contact == null)
                 {
                     return HttpNotFound();
                 }
